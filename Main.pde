@@ -2,6 +2,7 @@ VirtualPet myPet;
 
 Button feedButton;
 Button playButton;
+ArrayList<String> a;
 
 // How many milliseconds between each status update
 // (increase to slow down, decrease to speed up)
@@ -17,7 +18,17 @@ void setup() {
   size(600, 500);
   textFont(createFont("Arial", 16, true));
 
-  myPet = new VirtualPet4("Coco");
+  myPet = new VirtualPet("Coco");
+  
+  a = new ArrayList<String>();
+  a.add("Watermelon");
+  a.add("Chocolate");
+  a.add("Pizza");
+  a.add("Apple");
+  a.add("Pasta");
+  a.add("Ramen");
+  a.add("Chicken");
+  a.add("Rice");
 
   // Buttons sit along the bottom of the screen
   // Button(label, x, y, width, height)
@@ -40,13 +51,16 @@ void draw() {
   feedButton.display();
   playButton.display();
   drawMessage();
+
 }
 
 void mousePressed() {
   if (feedButton.isClicked(mouseX, mouseY)) {
-    Food f = new Food("Watermelon", 3, 2, 2);
+    String foodName = a.get((int) random(0, 8));
+    Food f = new Food(foodName, 3, 2, 2);
     myPet.feed(f);
     showMessage(f.getName() + " eaten!");
+    //print(a.get(2));
   }
 
   if (playButton.isClicked(mouseX, mouseY)) {
