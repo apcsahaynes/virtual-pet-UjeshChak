@@ -43,7 +43,7 @@ void drawPetArea() {
   rect(20, 20, 380, 390, 16);
 
   // Draw whichever graphic option you're using
-  drawPetGraphic();
+  drawPetGraphic(myPet);
 }
 
 
@@ -52,7 +52,7 @@ void drawPetArea() {
 // Replace or add to the placeholder below!
 // =============================================
 
-void drawPetGraphic() {
+void drawPetGraphic(VirtualPet pet) {
 
   // ---- Placeholder shape ----
   // Replace this with your own drawing,
@@ -61,7 +61,7 @@ void drawPetGraphic() {
   // Body
   fill(170, 210, 255);
   noStroke();
-  ellipse(210, 220, 140, 120);
+  ellipse(210, 220, 140 + pet.getWeight(), 120 + pet.getWeight());
 
   // Head
   fill(170, 210, 255);
@@ -85,7 +85,15 @@ void drawPetGraphic() {
   noFill();
   stroke(80);
   strokeWeight(2);
+  if (pet.getHappinessLevel() > 50) {
   arc(210, 160, 24, 14, 0, PI);
+  }
+  else if (pet.getHappinessLevel() <= 50 && pet.getHappinessLevel() > 25) {
+    line(198, 160, 222, 160);
+  }
+  else if (pet.getHappinessLevel() <= 25) {
+    arc(210, 170, 24, 14, PI, TWO_PI);
+  }
 
   // Ears
   fill(170, 210, 255);
