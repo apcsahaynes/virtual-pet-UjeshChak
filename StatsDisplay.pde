@@ -18,13 +18,15 @@ void drawStats(VirtualPet pet) {
   textAlign(CENTER, TOP);
   textSize(15);
   text(pet.getName(), STATS_X + STATS_W / 2, STATS_Y + 10);
-
+  
   // ---- Stat rows ----
   // statRow(label, value, rowIndex)
   // Add a new line here for each stat you add!
   int row = 0;
   statRow("Energy",    pet.getEnergyLevel(),    row++);
   statRow("Happiness", pet.getHappinessLevel(), row++);
+  statRow("Age (months)", pet.getAgeMonths(), row++);
+  statRow("Weight", pet.getWeight(), row++);
   // statRow("Weight",    pet.getWeight(),         row++);  // uncomment when getter added
   // statRow("Age",       pet.getAgeYears(),        row++);  // uncomment when getter added
 }
